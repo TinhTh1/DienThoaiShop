@@ -1,4 +1,4 @@
-namespace DienThoaiShop.Models
+namespace DTShop.Models
 {
     public class ErrorViewModel
     {
