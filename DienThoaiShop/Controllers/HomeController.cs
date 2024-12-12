@@ -23,6 +23,8 @@ namespace DienThoaiShop.Controllers
         {
             var loaiSanPham = await _context.LoaiSanPham.Include(s => s.SanPham).ToListAsync();
             return View(loaiSanPham);
+
+            //Kiet123
         }
         // GET: Register 
         [AllowAnonymous]
