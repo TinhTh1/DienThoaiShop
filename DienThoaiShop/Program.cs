@@ -1,3 +1,5 @@
+using DTShop.Logic;
+using DTShop.Models;
 using DTShop.Models;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
@@ -26,6 +28,10 @@ builder.Services.AddSession(options => {
     options.Cookie.Name = "ITShop.Session";
     options.IdleTimeout = TimeSpan.FromMinutes(15);
 });
+builder.Services.AddTransient<IMailLogic, MailLogic>();
+
+// L?y thông tin c?u h?nh trong t?p tin appsettings.json và gán vào ð?i tý?ng MailSettings 
+builder.Services.Configure<MailSettings>(builder.Configuration.GetSection("MailSettings"));
 
 var app = builder.Build();
 

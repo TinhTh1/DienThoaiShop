@@ -7,7 +7,7 @@ using System.Diagnostics;
 using System.Security.Claims;
 using BC = BCrypt.Net.BCrypt;
 using Microsoft.EntityFrameworkCore;
-namespace DienThoaiShop.Controllers
+namespace DTShop.Controllers
 {
     public class HomeController : Controller
     {
@@ -23,7 +23,6 @@ namespace DienThoaiShop.Controllers
         {
             var loaiSanPham = await _context.LoaiSanPham.Include(s => s.SanPham).ToListAsync();
             return View(loaiSanPham);
-       
         }
         // GET: Register 
         [AllowAnonymous]
@@ -79,7 +78,7 @@ namespace DienThoaiShop.Controllers
             }
         }
 
-        // POST: Login 
+        // POST: Login
         [HttpPost]
         [AllowAnonymous]
         public async Task<IActionResult> Login([Bind] DangNhap dangNhap)
