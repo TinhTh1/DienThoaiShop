@@ -4,9 +4,7 @@ using System.ComponentModel.DataAnnotations;
 namespace DTShop.Models
 {
     public class DatHang
-    {
-
-        //chohjhhhjg
+    {    
         [DisplayName("Mã Đặt Hàng")]
         public int ID { get; set; }
 
