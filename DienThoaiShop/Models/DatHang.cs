@@ -6,7 +6,7 @@ namespace DTShop.Models
     public class DatHang
     {
 
-        //cho
+        //chohjhhhjg
         [DisplayName("Mã Đặt Hàng")]
         public int ID { get; set; }
 
