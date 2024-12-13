@@ -51,5 +51,14 @@ namespace DTShop.Models
 		public HangSanXuat? HangSanXuat { get; set; }
         public ICollection<DatHang_ChiTiet>? DatHang_ChiTiet { get; set; }
     }
-   
+    [NotMapped]
+    public class PhanTrangSanPham
+    {
+        public int TrangHienTai { get; set; }
+        public int TongSoTrang { get; set; }
+        public List<SanPham> SanPham { get; set; }
+        public bool HasPreviousPage => TrangHienTai > 1;
+        public bool HasNextPage => TrangHienTai < TongSoTrang;
+    }
+
 }
