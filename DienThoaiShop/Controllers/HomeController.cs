@@ -17,7 +17,8 @@ namespace DTShop.Controllers
         public HomeController(DTShopDbContext context, IHttpContextAccessor httpContextAccessor)
         {
             _context = context;
-            _httpContextAccessor = httpContextAccessor;          
+            _httpContextAccessor = httpContextAccessor;        
+            //KHOAAAAAA
         }
         public async Task<IActionResult> Index()
         {
