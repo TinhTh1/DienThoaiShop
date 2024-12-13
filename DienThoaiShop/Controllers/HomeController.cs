@@ -35,6 +35,7 @@ namespace DTShop.Controllers
         // POST: Register 
         [HttpPost]
         [AllowAnonymous]
+
         public async Task<IActionResult> Register([Bind("ID,HoVaTen,Email,DienThoai,DiaChi,TenDangNhap,MatKhau,XacNhanMatKhau")] NguoiDung nguoiDung)
         {
             if (ModelState.IsValid)
