@@ -41,6 +41,18 @@ namespace DienThoaiShop.Controllers
 
             return phanTrang;
         }
+        // GET: ChiTiet
+        public IActionResult ChiTiet(string tenLoai, string tenSanPham)
+        {
+            var sanPham = _context.SanPham
+            .Include(s => s.HangSanXuat)
+            .Include(s => s.LoaiSanPham)
+            .Where(r => r.TenSanPhamKhongDau == tenSanPham).SingleOrDefault();
+            if (sanPham == null)
+                return NotFound();
+            else
+                return View(sanPham);
+        }
     }
 }
 
