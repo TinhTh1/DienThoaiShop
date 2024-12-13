@@ -159,6 +159,18 @@ namespace ITShop.Controllers
                 return RedirectToAction("DatHangThanhCong", "KhachHang", new { Area = "" });
             }
         }
+        // GET: DonHangCuaToi
+        public async Task<IActionResult> DonHangCuaToi()
+        {
+            int maNguoiDung = Convert.ToInt32(_httpContextAccessor.HttpContext.User.Claims.FirstOrDefault(c => c.Type == "ID")?.Value);
+            var datHang = _context.DatHang.Where(r => r.NguoiDungID == maNguoiDung)
+            .Include(d => d.NguoiDung)
+            .Include(d => d.TinhTrang)
+            .Include(d => d.DatHang_ChiTiet)
+            .ThenInclude(s => s.SanPham);
+            return View(await datHang.ToListAsync());
+        }
+
 
         // GET: DatHangThanhCong 
         public IActionResult DatHangThanhCong()
