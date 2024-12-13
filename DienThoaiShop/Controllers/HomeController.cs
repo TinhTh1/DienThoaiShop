@@ -18,7 +18,6 @@ namespace DTShop.Controllers
         {
             _context = context;
             _httpContextAccessor = httpContextAccessor;        
-            //KHOAAAAAA
         }
         public async Task<IActionResult> Index()
         {
