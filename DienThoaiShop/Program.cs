@@ -1,8 +1,8 @@
 using DTShop.Logic;
 using DTShop.Models;
-using DTShop.Models;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,7 +25,7 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddDistributedMemoryCache();
 builder.Services.AddSession(options => {
-    options.Cookie.Name = "ITShop.Session";
+    options.Cookie.Name = "DTShop.Session";
     options.IdleTimeout = TimeSpan.FromMinutes(15);
 });
 builder.Services.AddTransient<IMailLogic, MailLogic>();

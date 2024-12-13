@@ -143,7 +143,7 @@ namespace ITShop.Controllers
                 try
                 {
                     MailInfo mailInfo = new MailInfo();
-                    mailInfo.Subject = "Đặt hàng thành công tại ITShop.Com.Vn";
+                    mailInfo.Subject = "Đặt hàng thành công tại DienThoaiShop.Com.Vn";
 
 
                     var datHangInfo = _context.DatHang.Where(r => r.ID == dh.ID)

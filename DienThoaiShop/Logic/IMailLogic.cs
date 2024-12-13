@@ -1,5 +1,4 @@
 ﻿using DTShop.Models;
-using DTShop.Models;
 
 namespace DTShop.Logic
 {
