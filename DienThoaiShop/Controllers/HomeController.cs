@@ -18,7 +18,7 @@ namespace DTShop.Controllers
         {
             _context = context;
             _httpContextAccessor = httpContextAccessor;        
-            //Muốn đưa lên git
+           
         }
         public async Task<IActionResult> Index()
         {
