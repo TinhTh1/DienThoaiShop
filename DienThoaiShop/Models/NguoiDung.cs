@@ -1,4 +1,5 @@
 ﻿using DTShop.Models;
+using DTShop.Models;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -50,6 +51,8 @@ namespace DTShop.Models
         public bool Quyen { get; set; }
 
         public ICollection<DatHang>? DatHang { get; set; }
+        public ICollection<BaiViet>? BaiViet { get; set; }
+        public ICollection<BinhLuanBaiViet>? BinhLuanBaiViet { get; set; }
     }
 
     [NotMapped]

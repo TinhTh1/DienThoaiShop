@@ -4,6 +4,7 @@ using DTShop.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DienThoaiShop.Migrations
 {
     [DbContext(typeof(DTShopDbContext))]
-    partial class DTShopDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241214143010_TrangTin")]
+    partial class TrangTin
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -384,13 +387,13 @@ namespace DienThoaiShop.Migrations
                     b.HasOne("DTShop.Models.ChuDe", "ChuDe")
                         .WithMany("BaiViet")
                         .HasForeignKey("ChuDeID")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("DTShop.Models.NguoiDung", "NguoiDung")
                         .WithMany("BaiViet")
                         .HasForeignKey("NguoiDungID")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("ChuDe");
@@ -403,13 +406,13 @@ namespace DienThoaiShop.Migrations
                     b.HasOne("DTShop.Models.BaiViet", "BaiViet")
                         .WithMany("BinhLuanBaiViet")
                         .HasForeignKey("BaiVietID")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("DTShop.Models.NguoiDung", "NguoiDung")
                         .WithMany("BinhLuanBaiViet")
                         .HasForeignKey("NguoiDungID")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("BaiViet");
@@ -422,13 +425,13 @@ namespace DienThoaiShop.Migrations
                     b.HasOne("DTShop.Models.NguoiDung", "NguoiDung")
                         .WithMany("DatHang")
                         .HasForeignKey("NguoiDungID")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("DTShop.Models.TinhTrang", "TinhTrang")
                         .WithMany("DatHang")
                         .HasForeignKey("TinhTrangID")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("NguoiDung");
@@ -441,13 +444,13 @@ namespace DienThoaiShop.Migrations
                     b.HasOne("DTShop.Models.DatHang", "DatHang")
                         .WithMany("DatHang_ChiTiet")
                         .HasForeignKey("DatHangID")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("DTShop.Models.SanPham", "SanPham")
                         .WithMany("DatHang_ChiTiet")
                         .HasForeignKey("SanPhamID")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("DatHang");
@@ -460,7 +463,7 @@ namespace DienThoaiShop.Migrations
                     b.HasOne("DTShop.Models.SanPham", "SanPham")
                         .WithMany()
                         .HasForeignKey("SanPhamID")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("SanPham");
@@ -471,13 +474,13 @@ namespace DienThoaiShop.Migrations
                     b.HasOne("DTShop.Models.HangSanXuat", "HangSanXuat")
                         .WithMany("SanPham")
                         .HasForeignKey("HangSanXuatID")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("DTShop.Models.LoaiSanPham", "LoaiSanPham")
                         .WithMany("SanPham")
                         .HasForeignKey("LoaiSanPhamID")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("HangSanXuat");
