@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DienThoaiShop.Migrations
 {
     [DbContext(typeof(DTShopDbContext))]
-    [Migration("20241214143010_TrangTin")]
+    [Migration("20241214152644_TrangTin")]
     partial class TrangTin
     {
         /// <inheritdoc />

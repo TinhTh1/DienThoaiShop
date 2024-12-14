@@ -1,5 +1,4 @@
-﻿using DTShop.Models;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
 
@@ -36,8 +35,6 @@ namespace DTShop.Models
         [DisplayName("Kiểm duyệt")]
         [DefaultValue(false)]
         public bool KiemDuyet { get; set; }
-
-
 
         public BaiViet? BaiViet { get; set; }
         public NguoiDung? NguoiDung { get; set; }

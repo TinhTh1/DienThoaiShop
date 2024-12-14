@@ -1,7 +1,7 @@
-﻿using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
+﻿using DTShop.Models;
 using System.ComponentModel.DataAnnotations.Schema;
-using DTShop.Models;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel;
 
 namespace DTShop.Models
 {
@@ -11,9 +11,6 @@ namespace DTShop.Models
         public int ID { get; set; }
 
         [DisplayName("Chủ đề")]
-
-
-
         [Required(ErrorMessage = "Chủ đề không được bỏ trống")]
         public int ChuDeID { get; set; }
 
