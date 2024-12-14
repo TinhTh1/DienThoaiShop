@@ -1,8 +1,6 @@
 ﻿using DienThoaiShop.Logic;
 using DTShop.Logic;
 using DTShop.Models;
-using DTShop.Logic;
-using DTShop.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -10,7 +8,7 @@ using System.Linq.Dynamic.Core;
 using BC = BCrypt.Net.BCrypt;
 
 
-namespace ITShop.Controllers
+namespace DTShop.Controllers
 {
     [Authorize(Roles = "Admin, User")]
     public class KhachHangController : Controller

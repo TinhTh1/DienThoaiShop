@@ -1,7 +1,7 @@
 ﻿using DienThoaiShop.Logic;
 using DTShop.Models;
 using Microsoft.AspNetCore.Mvc;
-namespace ITShop.Controllers
+namespace DienThoaiShop.Controllers
 {
     public class GioHangController : Controller
     {
