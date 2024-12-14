@@ -51,8 +51,7 @@ namespace DTShop.Models
         public bool Quyen { get; set; }
 
         public ICollection<DatHang>? DatHang { get; set; }
-        public ICollection<BaiViet>? BaiViet { get; set; }
-        public ICollection<BinhLuanBaiViet>? BinhLuanBaiViet { get; set; }
+       
     }
 
     [NotMapped]
