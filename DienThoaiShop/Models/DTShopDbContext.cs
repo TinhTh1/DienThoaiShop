@@ -15,7 +15,9 @@ namespace DTShop.Models
         public DbSet<DatHang> DatHang { get; set; }    
         public DbSet<DatHang_ChiTiet> DatHang_ChiTiet { get; set; }
         public DbSet<GioHang> GioHang { get; set; }
-
+        public DbSet<ChuDe> ChuDe { get; set; }
+        public DbSet<BaiViet> BaiViet { get; set; }
+        public DbSet<BinhLuanBaiViet> BinhLuanBaiViet { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -27,7 +29,9 @@ namespace DTShop.Models
             modelBuilder.Entity<DatHang>().ToTable("DatHang");
             modelBuilder.Entity<DatHang_ChiTiet>().ToTable("DatHang_ChiTiet");
             modelBuilder.Entity<GioHang>().ToTable("GioHang");
-        
+            modelBuilder.Entity<ChuDe>().ToTable("ChuDe");
+            modelBuilder.Entity<BaiViet>().ToTable("BaiViet");
+            modelBuilder.Entity<BinhLuanBaiViet>().ToTable("BinhLuanBaiViet");
 
         }
     }
