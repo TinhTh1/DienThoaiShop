@@ -15,6 +15,7 @@ namespace DienThoaiShop.Controllers
         }
 
         // GET: Index 
+        [Route("tat-ca-bai-viet/{trang?}")]
         public IActionResult Index(int? trang)
         {
             var danhSach = LayDanhSachBaiViet(trang ?? 1);
@@ -45,6 +46,7 @@ namespace DienThoaiShop.Controllers
         }
 
         // GET: ChuDe 
+        [Route("bai-viet/{tenChuDe}/{trang?}")]
         public IActionResult ChuDe(string tenChuDe, int? trang)
         {
             var danhSachPhanLoai = LayDanhSachBaiVietTheoChuDe(tenChuDe, trang ?? 1);
@@ -78,6 +80,7 @@ namespace DienThoaiShop.Controllers
         }
 
         // GET: ChiTiet 
+        [Route("bai-viet/{tenChuDe}/{tieuDe}.html")]
         public IActionResult ChiTiet(string tenChuDe, string tieuDe)
         {
             var baiViet = _context.BaiViet
