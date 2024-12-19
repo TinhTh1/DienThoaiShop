@@ -1,5 +1,4 @@
-﻿using DTShop.Models;
-using Microsoft.AspNetCore.Authentication.Cookies;
+﻿using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -7,17 +6,23 @@ using System.Diagnostics;
 using System.Security.Claims;
 using BC = BCrypt.Net.BCrypt;
 using Microsoft.EntityFrameworkCore;
-namespace DTShop.Controllers
+using DTShop.Logic;
+using DTShop.Models;
+namespace DienThoaiShop.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly ILogger<HomeController> _logger;
         private readonly DTShopDbContext _context;
         private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly IMailLogic _mailLogic;
 
-        public HomeController(DTShopDbContext context, IHttpContextAccessor httpContextAccessor)
+        public HomeController(ILogger<HomeController> logger, DTShopDbContext context, IHttpContextAccessor httpContextAccessor, IMailLogic mailLogic)
         {
+            _logger = logger;
             _context = context;
-            _httpContextAccessor = httpContextAccessor;                 
+            _httpContextAccessor = httpContextAccessor;
+            _mailLogic = mailLogic;
         }
         public async Task<IActionResult> Index()
         {
@@ -32,10 +37,10 @@ namespace DTShop.Controllers
                 TempData["ThongBao"] = successMessage;
             return View();
         }
+
         // POST: Register 
         [HttpPost]
         [AllowAnonymous]
-
         public async Task<IActionResult> Register([Bind("ID,HoVaTen,Email,DienThoai,DiaChi,TenDangNhap,MatKhau,XacNhanMatKhau")] NguoiDung nguoiDung)
         {
             if (ModelState.IsValid)
@@ -46,14 +51,24 @@ namespace DTShop.Controllers
                     nguoiDung.MatKhau = BC.HashPassword(nguoiDung.MatKhau);
                     nguoiDung.XacNhanMatKhau = BC.HashPassword(nguoiDung.MatKhau);
                     nguoiDung.Quyen = false; // Khách hàng 
-
                     _context.Add(nguoiDung);
                     await _context.SaveChangesAsync();
+
+                    // Gởi email 
+                    try
+                    {
+                        MailInfo mailInfo = new MailInfo();
+                        mailInfo.Subject = "Đăng ký thành công tại ShopDienThoai.Com.Vn";
+                        var nguoiDungInfo = nguoiDung;
+                        await _mailLogic.GoiEmailDangKyThanhCong(nguoiDungInfo, mailInfo);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new Exception(ex.Message.ToString());
+                    }
                     return RedirectToAction("Register", "Home", new { Area = "", successMessage = "Đăng ký tài khoản thành công." });
                 }
                 else
-
-
                 {
                     TempData["ThongBaoLoi"] = "Tên đăng nhập này đã được sử dụng cho một tài khoản khác.";
                     return View(nguoiDung);
@@ -61,6 +76,8 @@ namespace DTShop.Controllers
             }
             return View(nguoiDung);
         }
+
+
 
         // GET: Login 
         [AllowAnonymous]
@@ -79,7 +96,7 @@ namespace DTShop.Controllers
             }
         }
 
-        // POST: Login
+        // POST: Login 
         [HttpPost]
         [AllowAnonymous]
         public async Task<IActionResult> Login([Bind] DangNhap dangNhap)
@@ -134,10 +151,13 @@ namespace DTShop.Controllers
         {
             return View();
         }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        
     }
 }

@@ -7,7 +7,6 @@ using Microsoft.EntityFrameworkCore;
 using System.Linq.Dynamic.Core;
 using BC = BCrypt.Net.BCrypt;
 
-
 namespace DTShop.Controllers
 {
     [Authorize(Roles = "Admin, User")]
@@ -141,7 +140,7 @@ namespace DTShop.Controllers
                 try
                 {
                     MailInfo mailInfo = new MailInfo();
-                    mailInfo.Subject = "Đặt hàng thành công tại DienThoaiShop.Com.Vn";
+                    mailInfo.Subject = "Đặt hàng thành công tại ShopDienThoai.Com.Vn";
 
 
                     var datHangInfo = _context.DatHang.Where(r => r.ID == dh.ID)

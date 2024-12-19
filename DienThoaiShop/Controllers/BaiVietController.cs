@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace DienThoaiShop.Controllers
+namespace DTShop.Controllers
 {
     public class BaiVietController : Controller
     {

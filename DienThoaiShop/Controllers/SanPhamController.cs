@@ -13,7 +13,7 @@ namespace DienThoaiShop.Controllers
         }
 
         // GET: Index 
-        [Route("san-pham/{trang?}")]
+     //   [Route("san-pham/{trang?}")]
         public IActionResult Index(int? trang)
         {
             var danhSach = LayDanhSachSanPham(trang ?? 1);
@@ -42,7 +42,7 @@ namespace DienThoaiShop.Controllers
         }
 
         // GET: PhanLoai 
-        [Route("san-pham/{tenLoai}/{trang?}")]
+   //     [Route("san-pham/{tenLoai}/{trang?}")]
         public IActionResult PhanLoai(string tenLoai, int? trang)
         {
             var danhSachPhanLoai = LayDanhSachSanPhamTheoPhanLoai(tenLoai, trang ?? 1);
@@ -72,7 +72,7 @@ namespace DienThoaiShop.Controllers
             return phanTrang;
         }
         // GET: ChiTiet 
-        [Route("san-pham/{tenLoai}/{tenSanPham}.html")]
+   //     [Route("san-pham/{tenLoai}/{tenSanPham}.html")]
         public IActionResult ChiTiet(string tenLoai, string tenSanPham)
         {
             var sanPham = _context.SanPham

@@ -6,5 +6,6 @@ namespace DTShop.Logic
     {
         Task GoiEmail(MailInfo mailInfo);
         Task GoiEmailDatHangThanhCong(DatHang datHang, MailInfo mailInfo);
+        Task GoiEmailDangKyThanhCong(NguoiDung nguoiDung, MailInfo mailInfo);
     }
 }

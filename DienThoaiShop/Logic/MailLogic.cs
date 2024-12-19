@@ -93,5 +93,33 @@ namespace DTShop.Logic
             await smtp.SendAsync(email);
             smtp.Disconnect(true);
         }
+        public async Task GoiEmailDangKyThanhCong(NguoiDung nguoiDung, MailInfo mailInfo)
+        {
+            string FilePath = Directory.GetCurrentDirectory() + "\\Emails\\DangKyThanhCong.html";
+            StreamReader str = new StreamReader(FilePath);
+            string MailText = str.ReadToEnd();
+            str.Close();
+
+
+            MailText = MailText.Replace("[HoVaTen]", nguoiDung.HoVaTen)
+                .Replace("[Email]", nguoiDung.Email)
+                .Replace("[DienThoai]", nguoiDung.DienThoai)
+                .Replace("[DiaChi]", nguoiDung.DiaChi)
+                .Replace("[TenDangNhap]", nguoiDung.TenDangNhap);
+
+            var email = new MimeMessage();
+            email.From.Add(new MailboxAddress(_mailSettings.DisplayName, _mailSettings.Address));
+            email.To.Add(new MailboxAddress(nguoiDung.HoVaTen, nguoiDung.Email));
+            email.Subject = mailInfo.Subject;
+            var builder = new BodyBuilder();
+            builder.HtmlBody = MailText;
+            email.Body = builder.ToMessageBody();
+
+            var smtp = new SmtpClient();
+            smtp.Connect(_mailSettings.Host, _mailSettings.Port, SecureSocketOptions.StartTls);
+            smtp.Authenticate(_mailSettings.Address, _mailSettings.Password);
+            await smtp.SendAsync(email);
+            smtp.Disconnect(true);
+        }
     }
 }
