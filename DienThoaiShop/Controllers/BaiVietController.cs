@@ -80,7 +80,7 @@ namespace DTShop.Controllers
         }
 
         // GET: ChiTiet 
-        [Route("bai-viet/{tenChuDe}/{tieuDe}.html")]
+       [Route("bai-viet/{tenChuDe}/{tieuDe}.html")]
         public IActionResult ChiTiet(string tenChuDe, string tieuDe)
         {
             var baiViet = _context.BaiViet
